@@ -1,3 +1,5 @@
+using System.Data.Common;
+
 public static class Arrays
 {
     /// <summary>
@@ -12,8 +14,16 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+        // notes: this function is supposed to create an array that includes the multiples of value number up to the given length this can be done with a
+        // simple for loop where number is multiplied by i with the result being add to the array
+        var multiples = new double[length];
+        for (int i = 0; i < length;)
+        {
+            i++;
+            multiples[i] = number * i;
+        }
 
-        return []; // replace this return statement with your own
+        return multiples; // replace this return statement with your own
     }
 
     /// <summary>
@@ -29,5 +39,17 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+        var newlist = new int[data.Count];
+        for (int i = 0; i < data.Count; i++)
+        {
+            if (data[i - amount] < 0)
+            {
+                newlist[i] = data[data.Count - amount + i];
+            }
+            else
+            {
+                newlist[i] = data[data.Count - i];
+            }
+        }
     }
 }
