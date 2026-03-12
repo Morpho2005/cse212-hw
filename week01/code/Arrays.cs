@@ -1,4 +1,7 @@
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
 using System.Data.Common;
+using System.Runtime.Serialization.DataContracts;
 
 public static class Arrays
 {
@@ -17,10 +20,9 @@ public static class Arrays
         // notes: this function is supposed to create an array that includes the multiples of value number up to the given length this can be done with a
         // simple for loop where number is multiplied by i with the result being add to the array
         var multiples = new double[length];
-        for (int i = 0; i < length;)
+        for (int i = 1; i < length + 1; i++)
         {
-            i++;
-            multiples[i] = number * i;
+            multiples[i - 1] = number * i;
         }
 
         return multiples; // replace this return statement with your own
@@ -39,17 +41,9 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
-        var newlist = new int[data.Count];
-        for (int i = 0; i < data.Count; i++)
-        {
-            if (data[i - amount] < 0)
-            {
-                newlist[i] = data[data.Count - amount + i];
-            }
-            else
-            {
-                newlist[i] = data[data.Count - i];
-            }
-        }
+        // it is quite simple to use insert and remove statements to change the location of a variable inside of an array, but since this array does not have a fixed size we will have
+        // to use the count function of the array, and subtrat the amount variable from the resulting interger, to aquire the index value, we then use this to modify the original array.
+        data.InsertRange(0, data.GetRange(data.Count-amount, amount));
+        data.RemoveRange(data.Count-amount, amount);
     }
 }
