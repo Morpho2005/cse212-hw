@@ -142,6 +142,10 @@ public class LinkedList : IEnumerable<int>
                 {
                     RemoveTail();
                 }
+                else if (curr == _head)
+                {
+                    RemoveHead();
+                }
                 else
                 {
                     curr.Next.Prev = curr.Prev;
